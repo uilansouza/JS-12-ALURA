@@ -1,0 +1,14 @@
+
+
+<meta charset="utc-8"> 
+<h1>IMC</h1>
+<p id="mostrador">  </p>
+<script>
+let peso = parseFloat( prompt("Digite seu peso").replace(',','.'))
+let altura = parseFloat( prompt("Digite sua altura"))
+
+let imc = peso / altura ** 2
+mostrador.textContent =`Seu IMC é  ${imc.toFixed(1)}`
+
+
+</script>
