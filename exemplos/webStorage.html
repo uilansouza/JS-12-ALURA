@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<center><h1>WebStorage: localStoreage / sessionStorage</h1></center>
+
+<script>
+    let sessionInfo = sessionStorage.getItem('nomeUsuario');//Dado temporario que é perdido quando uma sessão(pagina) é fechada
+    let localInfo = localStorage.getItem('nomeUsuario'); // Dado não se perde com a sessão
+
+    if(!sessionInfo && !localInfo){
+        let nome = prompt('informe seu nome para ser armazenada');
+
+        sessionStorage.setItem('nomeUsuario',nome)
+        localStorage.setItem('nomeUsuario',nome)
+        window.location.reload();
+    }
+
+    document.write(`
+        Info do LocalStorage: ${localInfo}<br>
+        Info do SessionStorage ${sessionInfo}  
+        <button onclick="excluir();"> excluir Informações </button>
+    
+    `);
+
+    function excluir(){
+        sessionStorage.clear();
+        localStorage.clear();
+        alert("Dados Excluidos com sucesso");
+        window.location.reload();
+    }
+</script>
+

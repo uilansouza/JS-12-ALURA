@@ -11,5 +11,81 @@ Nome do item:<br>
 <button id='btnExcluir'>Excluir</button>
 <button id='btnAcrescentar'>Acrescentar</button>
 <button id='btnOrdenarCrescente'>Ordenar de forma Crescente</button>
-<button id='btnOrdenarDescrescente'>Ordenar de forma Decrescente</button>
+<button id='btnOrdenarDecrescente'>Ordenar de forma Decrescente</button>
 <p id="mostrador">Sua lista nesse momento esta vazia</p>
+
+<script>
+    const lista =[]
+    btnAdicionar.onclick = ()=>{
+       let item = campoItem.value.trim();
+       let itemPosicao = lista.findIndex(itemLista =>{
+           
+          return itemLista.localeCompare(item, undefined, {sensitivity: 'base'})== 0 //Undefined seria o idioma padrão, ex: pt-BR en-EUA"
+           
+           })
+
+       if(item ===''){
+           alert('Por favor preencha o fucking campo!!');
+          
+
+       } else if(itemPosicao>=0){
+           item = item.charAt(0).toUpperCase() + item.substring(1)//Transformar em maiuscula a primeira String
+          lista[itemPosicao] = item;
+          exibirLista()
+
+       }
+       
+       else{
+           lista.push(item)
+           exibirLista()
+
+       }
+       campoItem.focus();
+       campoItem.value = '';
+    }
+    btnExcluir.onclick = ()=>{
+        let item = campoItem.value.trim();
+        let itemPosicao = lista.findIndex(itemLista =>{
+
+         return itemLista.localeCompare(item, undefined, {sensitivity: 'base'}) === 0
+
+        });
+        
+        if (itemPosicao >=0){
+            lista.splice(itemPosicao, 1)
+            exibirLista()
+        }else{
+            alert("Item não existe na Lista");
+            campoItem.value =''
+        }
+     
+              
+    }
+    btnOrdenarCrescente.onclick = () =>ordenar('crescente');
+    btnOrdenarDecrescente.onclick = () =>ordenar('decrescente');
+    
+    function ordenar (ordem){
+        lista.sort(function(item1, item2){
+        return item1.localeCompare(item2)
+        });
+    
+        if (ordem ==='decrescente'){
+            lista.reverse();
+        }
+        exibirLista()
+    }
+ 
+    function exibirLista()
+    {
+        mostrador.innerHTML =`
+            Sua lista de supermecado tem <b>${lista.length}</b> item(s). Eles São: <br>
+            <ol>
+                <li>
+                    ${lista.join('</li><li>')}
+                </li>
+            </ol>
+        
+        `
+    }
+
+</script>
