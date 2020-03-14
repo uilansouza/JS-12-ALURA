@@ -1,4 +1,4 @@
-let aceitouTermosAntes = localStorage.getItem('aceitouTermos')
+export let aceitouTermosAntes = localStorage.getItem('aceitouTermos')
 
 if (aceitouTermosAntes === null){
     

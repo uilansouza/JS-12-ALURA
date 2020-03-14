@@ -1,3 +1,3 @@
 import './exibicao.js';
 import './formulario.js';
-import './tarefas';
+import './tarefas.js';

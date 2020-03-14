@@ -1,10 +1,11 @@
-let aceitouSalvar = JSON.parse(localStorage.getItem('aceitouSalvar')) //TRANSFORMA EM UMA ESTRUTURA OBJETO
+import {aceitouSalvar, setAceitouSalvar} from "../storage/aceitouSalvar.js"
+
 
 if(aceitouSalvar === null){
-    aceitouSalvar = confirm('Você aceita que a gente salve suas informações ?');
+let aceitou = confirm('Você aceita que a gente salve suas informações ?');
 
-    if(!aceitouSalvar){
+    if(!aceitou){
         alert('Você pode mudar isso na pagina de configurações mais tarde');
     }
-    localStorage.setItem('aceitouSalvar',aceitouSalvar)
+    setAceitouSalvar(aceitou);
 }

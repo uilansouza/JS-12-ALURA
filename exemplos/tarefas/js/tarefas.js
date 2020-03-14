@@ -1,4 +1,4 @@
-//@ts-check   //Verifica os tipos quando é usado os document
+//@ts-check   //Verifica se os tipos passado na função como paramentro é o correto. Isso quando usa-se o document
 const listaTarefas =[]
 
 /**
@@ -6,7 +6,7 @@ const listaTarefas =[]
  * @param {string} tarefa | É necessário informar um variável do tipo string no caso, a variável
  * @param {void}
  */
-function adicionarTarefa(tarefa)
+export function adicionarTarefa(tarefa)
 {
     let tarefaExiste = listaTarefas.find(tarefaLista =>{
         return tarefaLista.localeCompare(tarefa, undefined, {sensitivity: 'base'})==0
@@ -24,7 +24,7 @@ function adicionarTarefa(tarefa)
 /**
  * 
  */
-function getTarefas()
+export function getTarefas()
 {
     return listaTarefas;
 }
@@ -34,7 +34,7 @@ function getTarefas()
  * @param {number} posicao  posicao do item a ser removido do array de tarefas
  * @returns {void}
  */
-function removeTarefas(posicao)
+export function removeTarefa(posicao)
 {
     if(posicao <0 || posicao >= listaTarefas.length){
         alert("Posição fornecida é Inválida")
